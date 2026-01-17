@@ -1,0 +1,217 @@
+[
+    {
+        "name": "Acesulfame Potassium",
+        "hazardLevel": "MEDIUM",
+        "description": "May affect metabolic health and gut flora in high quantities.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "SWEETENER"
+    },
+    {
+        "name": "Ascorbic Acid",
+        "hazardLevel": "LOW",
+        "description": "Commonly known as Vitamin C. Essential nutrient and preservative.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "ACIDULANT"
+    },
+    {
+        "name": "Aspartame",
+        "hazardLevel": "HIGH",
+        "description": "Controversial sweetener; potential neurological concerns.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "SWEETENER"
+    },
+    {
+        "name": "Titanium Dioxide",
+        "hazardLevel": "MEDIUM",
+        "description": "A whitening agent used in foods and cosmetics; banned in EU food due to concerns about DNA damage.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Red 40",
+        "hazardLevel": "HIGH",
+        "description": "Common food dye linked to hyperactivity in children and potential immune system effects.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Red 3",
+        "hazardLevel": "HIGH",
+        "description": "Synthetic dye linked to thyroid tumors in animal studies; being phased out by regulatory bodies.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Yellow 5",
+        "hazardLevel": "MEDIUM",
+        "description": "A food coloring that can cause allergic reactions and hyperactivity in sensitive individuals.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Yellow 6",
+        "hazardLevel": "MEDIUM",
+        "description": "Food dye associated with adrenal tumors in animals and hypersensitivity reactions.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Blue 1",
+        "hazardLevel": "MEDIUM",
+        "description": "Food coloring that may cause hypersensitivity reactions; linked to kidney tumors in mice.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Blue 2",
+        "hazardLevel": "MEDIUM",
+        "description": "Derived from indigo; linked to brain gliomas in male rats in comprehensive studies.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "COLORANT"
+    },
+    {
+        "name": "Sodium Benzoate",
+        "hazardLevel": "MEDIUM",
+        "description": "Preservative that can form carcinogenic benzene when combined with Vitamin C.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "BHA",
+        "hazardLevel": "HIGH",
+        "description": "Butylated Hydroxyanisole. Preservative classified as a possible human carcinogen.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "Butylated Hydroxyanisole",
+        "hazardLevel": "HIGH",
+        "description": "Full name for BHA. Preservative classified as a possible human carcinogen.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "BHT",
+        "hazardLevel": "MEDIUM",
+        "description": "Butylated Hydroytoluene. Linked to cancer in some animal studies and endocrine disruption.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "Potassium Bromate",
+        "hazardLevel": "HIGH",
+        "description": "Flour improver linked to cancer in laboratory animals; banned in many countries.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "FLOUR IMPROVER"
+    },
+    {
+        "name": "Propylparaben",
+        "hazardLevel": "HIGH",
+        "description": "Endocrine disruptor used as a preservative; linked to reproductive toxicity.",
+        "categories": [
+            "FOOD",
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "Sodium Nitrite",
+        "hazardLevel": "HIGH",
+        "description": "Preservative in processed meats; linked to colorectal cancer and heart disease risk.",
+        "categories": [
+            "FOOD"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "Parabens",
+        "hazardLevel": "HIGH",
+        "description": "Class of preservatives linked to hormone disruption and breast cancer detection.",
+        "categories": [
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "Phthalates",
+        "hazardLevel": "HIGH",
+        "description": "Plasticizers used in fragrances; linked to reproductive damage and endocrine disruption.",
+        "categories": [
+            "COSMETICS"
+        ],
+        "functionalCategory": "FRAGRANCE MODIFIER"
+    },
+    {
+        "name": "Formaldehyde",
+        "hazardLevel": "HIGH",
+        "description": "Known carcinogen used in some hair straighteners and nail hardeners.",
+        "categories": [
+            "COSMETICS"
+        ],
+        "functionalCategory": "PRESERVATIVE"
+    },
+    {
+        "name": "Triclosan",
+        "hazardLevel": "MEDIUM",
+        "description": "Antibacterial agent linked to hormone disruption and antibiotic resistance.",
+        "categories": [
+            "COSMETICS"
+        ],
+        "functionalCategory": "ANTIBACTERIAL"
+    },
+    {
+        "name": "Sodium Lauryl Sulfate",
+        "hazardLevel": "LOW",
+        "description": "Surfactant that can cause skin irritation and strip natural oils.",
+        "categories": [
+            "COSMETICS"
+        ],
+        "functionalCategory": "SURFACTANT"
+    },
+    {
+        "name": "SLS",
+        "hazardLevel": "LOW",
+        "description": "Abbreviation for Sodium Lauryl Sulfate; skin irritant.",
+        "categories": [
+            "COSMETICS"
+        ],
+        "functionalCategory": "SURFACTANT"
+    }
+]

@@ -1,0 +1,44 @@
+# Built artifacts
+bin/
+gen/
+out/
+build/
+.gradle/
+app/build/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Local configuration
+local.properties
+.DS_Store
+
+# Captures and logs
+captures/
+*.log
+*.hprof
+
+# Kotlin and Java
+*.class
+*.kt.tmp
+
+# Android Studio specific
+.navigation/
+.assetWizardSettings.xml
+.cxx/
+.externalNativeBuild/
+
+# Secrets and keys
+*.jks
+*.keystore
+!debug.keystore
+google-services.json
+
+# Backup files
+*.bak
+*.swp
+*~
