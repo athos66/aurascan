@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aura.scanlab.data.local.AuraDatabase
 import com.aura.scanlab.data.repository.AuraRepositoryImpl
+import com.aura.scanlab.data.repository.toDomain
 import com.aura.scanlab.domain.model.Ingredient
 import kotlinx.coroutines.launch
 import org.json.JSONArray
@@ -23,13 +24,20 @@ class AuraViewModel(context: Context) : ViewModel() {
     init {
         viewModelScope.launch {
             val count = database.ingredientDao().getIngredientCount()
-            // If count is low (e.g., still using the old 8-item list), force update
-            if (count < 15) {
-                Log.d("AuraViewModel", "Populating database from JSON (Current count: $count)")
+            // Fetch one to check if it has translations
+            val first = database.ingredientDao().getAllIngredientsOnce().firstOrNull()
+            // Check if el translation is missing or names map is actually empty
+            val hasTranslations = first?.toDomain()?.localizedNames?.containsKey("el") == true
+
+            // Force update if count is low OR if existing data lacks translations
+            if (count < 20 || !hasTranslations) {
+                Log.d("AuraViewModel", "Refreshing database (Count: $count, Translations: $hasTranslations)")
+                repository.deleteAllIngredients()
                 val ingredients = loadIngredientsFromAssets(context)
                 repository.initialPopulate(ingredients)
+                Log.d("AuraViewModel", "Refresh complete: ${ingredients.size} items")
             } else {
-                Log.d("AuraViewModel", "Database already populated ($count items)")
+                Log.d("AuraViewModel", "Database stable ($count items, localized)")
             }
         }
     }
@@ -49,12 +57,30 @@ class AuraViewModel(context: Context) : ViewModel() {
                     }
                 }
 
+                val localizedNamesMap = mutableMapOf<String, String>()
+                if (obj.has("localizedNames")) {
+                    val namesObj = obj.getJSONObject("localizedNames")
+                    namesObj.keys().forEach { key ->
+                        localizedNamesMap[key] = namesObj.getString(key)
+                    }
+                }
+
+                val localizedDescriptionsMap = mutableMapOf<String, String>()
+                if (obj.has("localizedDescriptions")) {
+                    val descObj = obj.getJSONObject("localizedDescriptions")
+                    descObj.keys().forEach { key ->
+                        localizedDescriptionsMap[key] = descObj.getString(key)
+                    }
+                }
+
                 list.add(Ingredient(
                     name = obj.getString("name"),
                     hazardLevel = com.aura.scanlab.domain.model.HazardLevel.valueOf(obj.getString("hazardLevel")),
                     description = obj.getString("description"),
                     categories = categoriesList,
-                    functionalCategory = if (obj.has("functionalCategory")) obj.getString("functionalCategory") else ""
+                    functionalCategory = if (obj.has("functionalCategory")) obj.getString("functionalCategory") else "",
+                    localizedNames = localizedNamesMap,
+                    localizedDescriptions = localizedDescriptionsMap
                 ))
             }
             list

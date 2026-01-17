@@ -6,7 +6,9 @@ data class Ingredient(
     val hazardLevel: HazardLevel,
     val description: String,
     val categories: List<String> = emptyList(),
-    val functionalCategory: String = ""
+    val functionalCategory: String = "",
+    val localizedNames: Map<String, String> = emptyMap(),
+    val localizedDescriptions: Map<String, String> = emptyMap()
 )
 
 enum class HazardLevel {

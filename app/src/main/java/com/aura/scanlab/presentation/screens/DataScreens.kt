@@ -49,14 +49,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.aura.scanlab.R
 import com.aura.scanlab.BuildConfig
 import com.aura.scanlab.domain.model.HistoryItem
 import com.aura.scanlab.domain.model.Ingredient
 import com.aura.scanlab.presentation.theme.AlertRed
 import com.aura.scanlab.presentation.theme.SuccessGreen
-import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
+import android.text.format.DateFormat
+import com.aura.scanlab.data.local.PreferenceManager
+import java.util.Date
 
 @Composable
 fun HistoryScreen() {
@@ -99,7 +101,7 @@ fun HistoryScreenContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "History",
+                stringResource(R.string.history_title),
                 color = Color.White,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
@@ -132,7 +134,7 @@ fun HistoryScreenContent(
                 TextField(
                     value = searchQuery,
                     onValueChange = onSearchChange,
-                    placeholder = { Text("Search previous scans...", color = Color.Gray, fontSize = 16.sp) },
+                    placeholder = { Text(stringResource(R.string.search_history_placeholder), color = Color.Gray, fontSize = 16.sp) },
                     modifier = Modifier.fillMaxWidth(),
                     colors = TextFieldDefaults.colors(
                         focusedContainerColor = Color.Transparent,
@@ -183,7 +185,11 @@ fun HistoryScreenContent(
                         ) {}
                     }
                     Text(
-                        text = if (filter == HistoryFilter.ALL) "ALL" else filter.name.lowercase().replaceFirstChar { it.uppercase() },
+                        text = when(filter) {
+                            HistoryFilter.ALL -> stringResource(R.string.filter_all)
+                            HistoryFilter.FOOD -> stringResource(R.string.category_food)
+                            HistoryFilter.COSMETICS -> stringResource(R.string.category_cosmetics)
+                        }.uppercase(),
                         color = if (isSelected) Color.Black else Color.White,
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 14.sp
@@ -197,7 +203,7 @@ fun HistoryScreenContent(
         // Grouped List
         if (historyGroups.isEmpty()) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("No scans found", color = Color.Gray)
+                Text(stringResource(R.string.history_empty), color = Color.Gray)
             }
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -214,12 +220,12 @@ fun HistoryScreenContent(
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold
                             )
-                            Text(
-                                text = "${items.size} ITEMS",
-                                color = Color.Gray,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold
-                            )
+                             Text(
+                                 text = stringResource(R.string.items_count, items.size),
+                                 color = Color.Gray,
+                                 fontSize = 12.sp,
+                                 fontWeight = FontWeight.Bold
+                             )
                         }
                     }
                     items(items, key = { it.id }) { item ->
@@ -234,7 +240,7 @@ fun HistoryScreenContent(
 
 @Composable
 fun HistoryCard(item: HistoryItem) {
-    val dateText = Instant.ofEpochMilli(item.timestamp).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("hh:mm a"))
+    val dateText = DateFormat.getTimeFormat(LocalContext.current).format(Date(item.timestamp))
     
     val iconColor = if (item.isClean) Color(0xFF1E3A1E) else Color(0xFF3A1E1E)
     val iconTint = if (item.isClean) Color(0xFF4DBB5F) else Color(0xFFFF5252)
@@ -300,7 +306,7 @@ fun HistoryCard(item: HistoryItem) {
                 if (!item.isClean && item.matchedIngredients.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = "Found: ${item.matchedIngredients.take(3).joinToString(", ")}${if(item.matchedIngredients.size > 3) "..." else ""}",
+                        text = stringResource(R.string.found_ingredients, item.matchedIngredients.take(3).joinToString(", "), if(item.matchedIngredients.size > 3) "..." else ""),
                         color = Color(0xFFFF5252),
                         fontSize = 12.sp,
                         maxLines = 1
@@ -326,7 +332,7 @@ fun HistoryCard(item: HistoryItem) {
                         )
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = if (item.isClean) "CLEAN" else "FLAGGED",
+                            text = if (item.isClean) stringResource(R.string.status_clean) else stringResource(R.string.status_flagged),
                             color = if (item.isClean) Color(0xFF00E676) else Color(0xFFFF5252),
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Bold,
@@ -395,16 +401,16 @@ fun EncyclopediaScreenContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = { /* Back */ }) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back), tint = Color.White)
             }
             Text(
-                "Chemical Encyclopedia",
+                stringResource(R.string.library_title),
                 color = Color.White,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             IconButton(onClick = { /* Info */ }) {
-                Icon(Icons.Default.Info, contentDescription = "Info", tint = Color.White)
+                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.info), tint = Color.White)
             }
         }
 
@@ -433,7 +439,7 @@ fun EncyclopediaScreenContent(
                     TextField(
                         value = searchQuery,
                         onValueChange = onSearchChange,
-                        placeholder = { Text("Search 5,000+ ingredients...", color = Color.Gray, fontSize = 16.sp) },
+                        placeholder = { Text(stringResource(R.string.search_ingredients), color = Color.Gray, fontSize = 16.sp) },
                         modifier = Modifier.fillMaxWidth(),
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.Transparent,
@@ -459,6 +465,8 @@ fun EncyclopediaScreenContent(
             ) {
                 items(categories) { category ->
                     val isSelected = selectedCategory == category
+                    val displayName = localizeFunctionalCategory(category)
+                    
                     Surface(
                         modifier = Modifier
                             .clip(RoundedCornerShape(20.dp))
@@ -472,7 +480,7 @@ fun EncyclopediaScreenContent(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = category.lowercase().replaceFirstChar { it.uppercase() },
+                                text = displayName,
                                 color = if (isSelected) Color.Black else Color.White,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold
@@ -496,7 +504,7 @@ fun EncyclopediaScreenContent(
             // GROUPED LIST
             if (ingredientsByLetter.isEmpty()) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(if (searchQuery.isEmpty()) "Loading ingredients..." else "No matches found", color = Color.Gray)
+                    Text(if (searchQuery.isEmpty()) stringResource(R.string.loading) else stringResource(R.string.no_scans_found), color = Color.Gray)
                 }
             } else {
                 LazyColumn(
@@ -517,7 +525,8 @@ fun EncyclopediaScreenContent(
                             }
                         }
                         items(items, key = { it.id }) { ingredient ->
-                            EncyclopediaCard(ingredient)
+                            val currentLang = PreferenceManager(LocalContext.current).getLanguage()
+                            EncyclopediaCard(ingredient, currentLang)
                         }
                     }
                 }
@@ -527,12 +536,15 @@ fun EncyclopediaScreenContent(
 }
 
 @Composable
-fun EncyclopediaCard(ingredient: Ingredient) {
+fun EncyclopediaCard(ingredient: Ingredient, currentLang: String) {
     val hazardInfo = when (ingredient.hazardLevel) {
-        com.aura.scanlab.domain.model.HazardLevel.HIGH -> Triple("AVOID", AlertRed, Color(0xFF301414))
-        com.aura.scanlab.domain.model.HazardLevel.MEDIUM -> Triple("CAUTION", com.aura.scanlab.presentation.theme.WarningOrange, Color(0xFF302414))
-        com.aura.scanlab.domain.model.HazardLevel.LOW -> Triple("SAFE", SuccessGreen, Color(0xFF143014))
+        com.aura.scanlab.domain.model.HazardLevel.HIGH -> Triple(stringResource(R.string.high_risk), AlertRed, Color(0xFF301414))
+        com.aura.scanlab.domain.model.HazardLevel.MEDIUM -> Triple(stringResource(R.string.medium_risk), com.aura.scanlab.presentation.theme.WarningOrange, Color(0xFF302414))
+        com.aura.scanlab.domain.model.HazardLevel.LOW -> Triple(stringResource(R.string.low_risk), SuccessGreen, Color(0xFF143014))
     }
+
+    val displayName = ingredient.localizedNames[currentLang] ?: ingredient.name
+    val displayDesc = ingredient.localizedDescriptions[currentLang] ?: ingredient.description
 
     Surface(
         modifier = Modifier.fillMaxWidth(),
@@ -570,7 +582,7 @@ fun EncyclopediaCard(ingredient: Ingredient) {
                             color = Color(0xFF262626)
                         ) {
                             Text(
-                                text = ingredient.functionalCategory.uppercase(),
+                                text = localizeFunctionalCategory(ingredient.functionalCategory).uppercase(),
                                 color = Color.Gray,
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
@@ -584,7 +596,7 @@ fun EncyclopediaCard(ingredient: Ingredient) {
                 Spacer(modifier = Modifier.height(12.dp))
                 
                 Text(
-                    text = ingredient.name,
+                    text = displayName,
                     color = Color.White,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
@@ -594,7 +606,7 @@ fun EncyclopediaCard(ingredient: Ingredient) {
                 Spacer(modifier = Modifier.height(8.dp))
                 
                 Text(
-                    text = ingredient.description,
+                    text = displayDesc,
                     color = Color(0xFFB0B0B0),
                     fontSize = 14.sp,
                     lineHeight = 20.sp,
@@ -604,7 +616,7 @@ fun EncyclopediaCard(ingredient: Ingredient) {
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 Text(
-                    text = "Learn more >",
+                    text = stringResource(R.string.learn_more),
                     color = Color(0xFF00E676),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -632,5 +644,23 @@ fun EncyclopediaCard(ingredient: Ingredient) {
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun localizeFunctionalCategory(category: String): String {
+    return when (category.uppercase()) {
+        "ALL" -> stringResource(R.string.category_all)
+        "FOOD" -> stringResource(R.string.category_food)
+        "COSMETICS" -> stringResource(R.string.category_cosmetics)
+        "SWEETENER" -> stringResource(R.string.category_sweetener)
+        "ACIDULANT" -> stringResource(R.string.category_acidulant)
+        "COLORANT" -> stringResource(R.string.category_colorant)
+        "PRESERVATIVE" -> stringResource(R.string.category_preservative)
+        "FLOUR IMPROVER" -> stringResource(R.string.category_flour_improver)
+        "FRAGRANCE MODIFIER" -> stringResource(R.string.category_fragrance_modifier)
+        "ANTIBACTERIAL" -> stringResource(R.string.category_antibacterial)
+        "SURFACTANT" -> stringResource(R.string.category_surfactant)
+        else -> category.lowercase().replaceFirstChar { it.uppercase() }
     }
 }

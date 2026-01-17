@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AuraScan Lab</string>
+    
+    <!-- Navigation -->
+    <string name="nav_scan">Σάρωση</string>
+    <string name="nav_saved">Αποθηκευμένα</string>
+    <string name="nav_library">Βιβλιοθήκη</string>
+    <string name="nav_settings">Ρυθμίσεις</string>
+    
+    <!-- Home Screen -->
+    <string name="analyzing_ingredients">Ανάλυση Συστατικών…</string>
+    <string name="scan_complete">Ολοκλήρωση Σάρωσης</string>
+    <string name="mode_food">ΤΡΟΦΙΜΑ</string>
+    <string name="mode_cosmetics">ΚΑΛΛΥΝΤΙΚΑ</string>
+    <string name="camera_required">Απαιτείται πρόσβαση κάμερας για σάρωση.</string>
+    <string name="flashlight">Φακός</string>
+    
+    <!-- Onboarding -->
+    <string name="splash_title">AURASCAN</string>
+    <string name="splash_subtitle">Μηχανή Προστασίας Υγείας</string>
+    <string name="privacy_title">Εγγύηση Απορρήτου</string>
+    <string name="privacy_description">Το AuraScan επεξεργάζεται όλες τις εικόνες απευθείας στη συσκευή σας. Δεν ανεβάζουμε ποτέ τις φωτογραφίες ή τα προσωπικά σας δεδομένα σε κανέναν διακομιστή.</string>
+    <string name="privacy_button">Κατάλαβα</string>
+    <string name="camera_access_title">Πρόσβαση Κάμερας</string>
+    <string name="camera_access_description">Το AuraScan χρειάζεται πρόσβαση στην κάμερα για να αναγνωρίζει χημικά συστατικά σε πραγματικό χρόνο. Η επεξεργασία γίνεται εξ ολοκλήρου στη συσκευή σας.</string>
+    <string name="enable_camera">Ενεργοποίηση Κάμερας</string>
+    <string name="maybe_later">Ίσως Αργότερα</string>
+    
+    <!-- Scan Results -->
+    <string name="safe_scan">ΑΣΦΑΛΗΣ ΣΑΡΩΣΗ: ΚΑΝΕΝΑΣ ΥΨΗΛΟΣ ΚΙΝΔΥΝΟΣ</string>
+    <string name="high_alert">ΥΨΗΛΗ ΕΙΔΟΠΟΙΗΣΗ: ΒΡΕΘΗΚΑΝ %d ΣΗΜΕΙΕΣ</string>
+    <string name="high_risk">ΥΨΗΛΟΣ ΚΙΝΔΥΝΟΣ</string>
+    <string name="medium_risk">ΜΕΤΡΙΟΣ ΚΙΝΔΥΝΟΣ</string>
+    <string name="low_risk">ΧΑΜΗΛΟΣ ΚΙΝΔΥΝΟΣ</string>
+    <string name="save_to_history">Αποθήκευση στο Ιστορικό</string>
+    <string name="scan_disclaimer">Τα δεδομένα σάρωσης παρέχονται από παγκόσμιες βάσεις δεδομένων υγείας. Συμβουλευτείτε επαγγελματία για διατροφικές συμβουλές.</string>
+    <string name="discard_scan">Απόρριψη Σάρωσης</string>
+    
+    <!-- History Screen -->
+    <string name="history_title">Ιστορικό Σάρωσης</string>
+    <string name="no_scans_yet">Δεν υπάρχουν σαρώσεις</string>
+    <string name="search_history">Αναζήτηση ιστορικού…</string>
+    <string name="filter_all">Όλα</string>
+    <string name="filter_today">Σήμερα</string>
+    <string name="filter_flagged">Επισημασμένα</string>
+    <string name="filter_clean">Καθαρά</string>
+    <string name="no_flagged_ingredients">Κανένα επισημασμένο συστατικό</string>
+    <string name="flagged_ingredients">Επισημασμένα: %s</string>
+    
+    <!-- Encyclopedia/Library -->
+    <string name="library_title">Βιβλιοθήκη Συστατικών</string>
+    <string name="search_ingredients">Αναζήτηση συστατικών…</string>
+    <string name="category_all">Όλες οι Κατηγορίες</string>
+    <string name="category_food">Τρόφιμα</string>
+    <string name="category_cosmetics">Καλλυντικά</string>
+    <string name="category_sweetener">Γλυκαντικό</string>
+    <string name="category_acidulant">Οξινιστικό</string>
+    <string name="category_colorant">Χρωστική</string>
+    <string name="category_preservative">Συντηρητικό</string>
+    <string name="category_flour_improver">Βελτιωτικό Αλεύρου</string>
+    <string name="category_fragrance_modifier">Τροποποιητής Αρώματος</string>
+    <string name="category_antibacterial">Αντιβακτηριδιακό</string>
+    <string name="category_surfactant">Επιφανειοδραστικό</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_general">ΓΕΝΙΚΑ</string>
+    <string name="clear_history">Εκκαθάριση Ιστορικού Σάρωσης</string>
+    <string name="language">Γλώσσα</string>
+    <string name="clear_history_title">Εκκαθάριση Ιστορικού</string>
+    <string name="clear_history_message">Αυτό θα διαγράψει όλο το ιστορικό σάρωσης. Είστε σίγουροι ότι θέλετε να προχωρήσετε;</string>
+    <string name="clear">Εκκαθάριση</string>
+    <string name="cancel">Ακύρωση</string>
+    <string name="select_language">Επιλογή Γλώσσας</string>
+    <string name="nav_history">Ιστορικό</string>
+    <string name="loading">Φόρτωση…</string>
+    <string name="items_count">%d ΑΝΤΙΚΕΙΜΕΝΑ</string>
+    <string name="found_ingredients">Βρέθηκαν: %s</string>
+    <string name="status_clean">ΚΑΘΑΡΟ</string>
+    <string name="status_flagged">ΕΠΙΣΗΜΑΣΜΕΝΟ</string>
+    <string name="no_scans_found">Δεν βρέθηκαν αποτελέσματα</string>
+    <string name="learn_more">Μάθετε περισσότερα ></string>
+    <string name="back">Πίσω</string>
+    <string name="info">Πληροφορίες</string>
+    <string name="complete">Ολοκληρώθηκε</string>
+    <string name="group_today">Σήμερα</string>
+    <string name="group_yesterday">Χθες</string>
+    <string name="default_food_scan_name">Σάρωση Τροφίμων</string>
+    <string name="default_cosmetic_scan_name">Σάρωση Καλλυντικών</string>
+    <string name="search_history_placeholder">Αναζήτηση ιστορικού…</string>
+    <string name="history_empty">Δεν βρέθηκαν σαρώσεις</string>
+</resources>

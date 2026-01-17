@@ -28,6 +28,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,6 +37,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.aura.scanlab.R
 import com.aura.scanlab.domain.model.HazardLevel
 import com.aura.scanlab.domain.model.Ingredient
 import com.aura.scanlab.presentation.theme.AlertRed
@@ -53,7 +56,7 @@ fun ScanResultPopup(
     val isClean = highRiskCount == 0
 
     val headerColor = if (isClean) SuccessGreen else AlertRed
-    val headerText = if (isClean) "SAFE SCAN: NO HIGH RISKS" else "HIGH ALERT: $highRiskCount FLAGS FOUND"
+    val headerText = if (isClean) stringResource(R.string.safe_scan) else stringResource(R.string.high_alert, highRiskCount)
     val headerIcon = if (isClean) Icons.Default.Info else Icons.Default.Warning
 
     Card(
@@ -142,7 +145,7 @@ fun ScanResultPopup(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Scan data provided by global health databases. Consult a professional for dietary advice.",
+                        text = stringResource(R.string.scan_disclaimer),
                         color = Color.Gray,
                         fontSize = 12.sp,
                         lineHeight = 16.sp
@@ -152,26 +155,54 @@ fun ScanResultPopup(
             
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Footer Button
-            Button(
-                onClick = onSave,
+            // Footer Buttons
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 20.dp)
-                    .height(56.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent
-                ),
-                shape = RoundedCornerShape(12.dp),
-                border = androidx.compose.foundation.BorderStroke(1.dp, Color.DarkGray)
+                    .padding(horizontal = 20.dp, vertical = 12.dp)
             ) {
-                Icon(
-                    imageVector = Icons.Default.Bookmark,
-                    contentDescription = null,
-                    tint = Color.White
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text("Save to My History", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Button(
+                    onClick = onSave,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, SuccessGreen.copy(alpha = 0.5f))
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Bookmark,
+                        contentDescription = null,
+                        tint = SuccessGreen
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        stringResource(R.string.save_to_history),
+                        color = SuccessGreen,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                TextButton(
+                    onClick = onDismiss,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    colors = ButtonDefaults.textButtonColors(
+                        contentColor = Color.Gray
+                    )
+                ) {
+                    Text(
+                        stringResource(R.string.discard_scan),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
             }
         }
     }
@@ -186,10 +217,14 @@ fun IngredientRow(ingredient: Ingredient) {
     }
     
     val riskText = when (ingredient.hazardLevel) {
-        HazardLevel.HIGH -> "HIGH RISK"
-        HazardLevel.MEDIUM -> "MEDIUM RISK"
-        HazardLevel.LOW -> "LOW RISK"
+        HazardLevel.HIGH -> stringResource(R.string.high_risk)
+        HazardLevel.MEDIUM -> stringResource(R.string.medium_risk)
+        HazardLevel.LOW -> stringResource(R.string.low_risk)
     }
+
+    val currentLang = java.util.Locale.getDefault().language
+    val displayName = ingredient.localizedNames[currentLang] ?: ingredient.name
+    val displayDesc = ingredient.localizedDescriptions[currentLang] ?: ingredient.description
 
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -199,7 +234,7 @@ fun IngredientRow(ingredient: Ingredient) {
         Column(modifier = Modifier.weight(1f)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = ingredient.name,
+                    text = displayName,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
@@ -222,7 +257,7 @@ fun IngredientRow(ingredient: Ingredient) {
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = ingredient.description,
+                text = displayDesc,
                 color = Color.LightGray,
                 fontSize = 14.sp,
                 lineHeight = 20.sp

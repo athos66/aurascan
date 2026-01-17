@@ -59,97 +59,91 @@ fun AuraScanApp(cameraExecutor: ExecutorService) {
         Scaffold(
             bottomBar = {
                 if (currentDestination?.route in mainScreens) {
-                    NavigationBar(
-                        containerColor = Color.Black, // Dark theme nav bar
-                        contentColor = Color.White
-                    ) {
-                        // 1. SCANNER (Center logic? No, just first item for now per screenshot)
-                        // Actually screenshot shows: Scan (Focus), Safety, Profile, Settings
-                        
-                        // 1. SCAN
-                        NavigationBarItem(
-                            icon = { Icon(Icons.Default.QrCodeScanner, contentDescription = null) },
-                            label = { Text("Scan") },
-                            selected = currentDestination?.route == Screen.Home.route,
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color(0xFF00E676),
-                                selectedTextColor = Color(0xFF00E676),
-                                unselectedIconColor = Color.Gray,
-                                unselectedTextColor = Color.Gray,
-                                indicatorColor = Color.Transparent
-                            ),
-                            onClick = {
-                                navController.navigate(Screen.Home.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
+                // Bottom Navigation
+                NavigationBar(
+                    containerColor = Color.Black,
+                    contentColor = Color.White
+                ) {
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.QrCodeScanner, contentDescription = null) },
+                        label = { Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.nav_scan)) },
+                        selected = currentDestination?.route == Screen.Home.route,
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Color(0xFF00E676),
+                            selectedTextColor = Color(0xFF00E676),
+                            unselectedIconColor = Color.Gray,
+                            unselectedTextColor = Color.Gray,
+                            indicatorColor = Color.Transparent
+                        ),
+                        onClick = {
+                            navController.navigate(Screen.Home.route) {
+                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
                             }
-                        )
+                        }
+                    )
 
-                        // 2. SAVED (History)
-                        NavigationBarItem(
-                            icon = { Icon(Icons.Default.Favorite, contentDescription = null) },
-                            label = { Text("Saved") },
-                            selected = currentDestination?.route == Screen.History.route,
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color(0xFF00E676),
-                                selectedTextColor = Color(0xFF00E676),
-                                unselectedIconColor = Color.Gray,
-                                unselectedTextColor = Color.Gray,
-                                indicatorColor = Color.Transparent
-                            ),
-                            onClick = {
-                                navController.navigate(Screen.History.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.Favorite, contentDescription = null) },
+                        label = { Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.nav_history)) },
+                        selected = currentDestination?.route == Screen.History.route,
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Color(0xFF00E676),
+                            selectedTextColor = Color(0xFF00E676),
+                            unselectedIconColor = Color.Gray,
+                            unselectedTextColor = Color.Gray,
+                            indicatorColor = Color.Transparent
+                        ),
+                        onClick = {
+                            navController.navigate(Screen.History.route) {
+                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
                             }
-                        )
+                        }
+                    )
 
-                        // 3. LIBRARY
-                        NavigationBarItem(
-                            icon = { Icon(Icons.Default.MenuBook, contentDescription = null) },
-                            label = { Text("Library") },
-                            selected = currentDestination?.route == Screen.Encyclopedia.route,
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color(0xFF00E676),
-                                selectedTextColor = Color(0xFF00E676),
-                                unselectedIconColor = Color.Gray,
-                                unselectedTextColor = Color.Gray,
-                                indicatorColor = Color.Transparent
-                            ),
-                            onClick = {
-                                navController.navigate(Screen.Encyclopedia.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.MenuBook, contentDescription = null) },
+                        label = { Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.nav_library)) },
+                        selected = currentDestination?.route == Screen.Encyclopedia.route,
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Color(0xFF00E676),
+                            selectedTextColor = Color(0xFF00E676),
+                            unselectedIconColor = Color.Gray,
+                            unselectedTextColor = Color.Gray,
+                            indicatorColor = Color.Transparent
+                        ),
+                        onClick = {
+                            navController.navigate(Screen.Encyclopedia.route) {
+                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
                             }
-                        )
-                        
-                        // 4. SETTINGS
-                        NavigationBarItem(
-                            icon = { Icon(Icons.Default.Settings, contentDescription = null) },
-                            label = { Text("Settings") },
-                            selected = currentDestination?.route == Screen.Settings.route,
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = Color(0xFF00E676),
-                                selectedTextColor = Color(0xFF00E676),
-                                unselectedIconColor = Color.Gray,
-                                unselectedTextColor = Color.Gray,
-                                indicatorColor = Color.Transparent
-                            ),
-                            onClick = {
-                                navController.navigate(Screen.Settings.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
+                        }
+                    )
+                    
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.Settings, contentDescription = null) },
+                        label = { Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.nav_settings)) },
+                        selected = currentDestination?.route == Screen.Settings.route,
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = Color(0xFF00E676),
+                            selectedTextColor = Color(0xFF00E676),
+                            unselectedIconColor = Color.Gray,
+                            unselectedTextColor = Color.Gray,
+                            indicatorColor = Color.Transparent
+                        ),
+                        onClick = {
+                            navController.navigate(Screen.Settings.route) {
+                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
                             }
-                        )
-                    }
+                        }
+                    )
+                }
                 }
             }
         ) { innerPadding ->

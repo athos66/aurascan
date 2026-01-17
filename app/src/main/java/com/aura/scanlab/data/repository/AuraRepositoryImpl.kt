@@ -39,7 +39,11 @@ class AuraRepositoryImpl(
         historyDao.clearHistory()
     }
     
-    suspend fun initialPopulate(ingredients: List<Ingredient>) {
+    override suspend fun deleteAllIngredients() {
+        ingredientDao.deleteAllIngredients()
+    }
+    
+    override suspend fun initialPopulate(ingredients: List<Ingredient>) {
         ingredientDao.insertAll(ingredients.map { it.toEntity() })
     }
 

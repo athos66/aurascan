@@ -8,6 +8,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aura.scanlab.data.local.AuraDatabase
+import com.aura.scanlab.data.local.PreferenceManager
 import com.aura.scanlab.data.repository.AuraRepositoryImpl
 import com.aura.scanlab.domain.model.Ingredient
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,7 +16,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 
-class LibraryViewModel(context: Context) : ViewModel() {
+class LibraryViewModel(private val context: Context) : ViewModel() {
     private val database = AuraDatabase.getDatabase(context)
     private val repository = AuraRepositoryImpl(database.ingredientDao(), database.historyDao())
 
@@ -27,10 +28,17 @@ class LibraryViewModel(context: Context) : ViewModel() {
         snapshotFlow { searchQuery },
         snapshotFlow { selectedCategory }
     ) { list, query, category ->
-        val filtered = list.filter { ingredient ->
+        val currentLang = PreferenceManager(context).getLanguage()
+        
+        list.map { ingredient ->
+            val displayName = ingredient.localizedNames[currentLang] ?: ingredient.name
+            val displayDesc = ingredient.localizedDescriptions[currentLang] ?: ingredient.description
+            Triple(ingredient, displayName, displayDesc)
+        }.filter { (ingredient, displayName, displayDesc) ->
             val matchesSearch = if (query.isBlank()) true else {
-                ingredient.name.contains(query, ignoreCase = true) || 
-                ingredient.description.contains(query, ignoreCase = true)
+                displayName.contains(query, ignoreCase = true) || 
+                displayDesc.contains(query, ignoreCase = true) ||
+                ingredient.name.contains(query, ignoreCase = true)
             }
             
             val matchesCategory = if (category == "All") true else {
@@ -38,10 +46,9 @@ class LibraryViewModel(context: Context) : ViewModel() {
             }
             
             matchesSearch && matchesCategory
-        }
-
-        filtered.sortedBy { it.name }
-            .groupBy { it.name.take(1).uppercase() }
+        }.sortedBy { it.second } // Sort by localized name
+        .groupBy { it.second.take(1).uppercase() } // Group by localized first letter
+        .mapValues { entry -> entry.value.map { it.first } }
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),

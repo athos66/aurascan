@@ -106,8 +106,15 @@ class HomeViewModel(private val context: Context) : ViewModel() {
     private suspend fun saveToHistory() {
         if (currentSessionIngredients.isEmpty()) return
         Log.i("HomeViewModel", "Saving ${currentSessionIngredients.size} ingredients to History")
+        
+        val defaultName = if (selectedMode == 0) {
+            context.getString(com.aura.scanlab.R.string.default_food_scan_name)
+        } else {
+            context.getString(com.aura.scanlab.R.string.default_cosmetic_scan_name)
+        }
+
         repository.saveScan(HistoryItem(
-            productName = if (selectedMode == 0) "Food Scan" else "Cosmetic Scan", // Ideally we'd have a product name detection, but for now this is the type
+            productName = defaultName,
             timestamp = System.currentTimeMillis(),
             isClean = !hasHarmfulIngredient(),
             matchedIngredients = currentSessionIngredients.map { it.name }.sorted(),

@@ -10,7 +10,9 @@ data class IngredientEntity(
     val hazardLevel: String, // Stored as String for Room simplicity
     val description: String,
     val categories: String = "", // Comma-separated or JSON
-    val functionalCategory: String = ""
+    val functionalCategory: String = "",
+    val localizedNamesJson: String = "{}",
+    val localizedDescriptionsJson: String = "{}"
 )
 
 @Entity(tableName = "scan_history")

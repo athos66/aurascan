@@ -60,12 +60,12 @@ fun SplashScreen(onNext: () -> Unit) {
             }
             Spacer(Modifier.height(24.dp))
             Text(
-                "AURASCAN",
+                androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.splash_title),
                 style = MaterialTheme.typography.headlineLarge,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                "Health Protection Engine",
+                androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.splash_subtitle),
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.primary
             )
@@ -91,13 +91,13 @@ fun PrivacyScreen(onNext: () -> Unit) {
         Icon(Icons.Default.PrivacyTip, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(64.dp))
         Spacer(Modifier.height(32.dp))
         Text(
-            "Privacy Guarantee",
+            androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.privacy_title),
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center
         )
         Spacer(Modifier.height(16.dp))
         Text(
-            "AuraScan processes all images directly on your device. We never upload your photos or personal data to any server.",
+            androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.privacy_description),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -107,7 +107,7 @@ fun PrivacyScreen(onNext: () -> Unit) {
             onClick = onNext,
             modifier = Modifier.fillMaxWidth().height(56.dp)
         ) {
-            Text("I Understand")
+            Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.privacy_button))
         }
     }
 }
@@ -170,13 +170,13 @@ fun PermissionsScreen(onNext: () -> Unit) {
         }
         Spacer(Modifier.height(32.dp))
         Text(
-            "Camera Access",
+            androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.camera_access_title),
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center
         )
         Spacer(Modifier.height(16.dp))
         Text(
-            "AuraScan needs camera access to identify chemical ingredients in real-time. This processing happens entirely on your device.",
+            androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.camera_access_description),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -188,13 +188,13 @@ fun PermissionsScreen(onNext: () -> Unit) {
                 .fillMaxWidth()
                 .height(56.dp)
         ) {
-            Text("Enable Camera")
+            Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.enable_camera))
         }
         TextButton(
             onClick = onNext,
             modifier = Modifier.padding(top = 8.dp)
         ) {
-            Text("Maybe Later", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.maybe_later), color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

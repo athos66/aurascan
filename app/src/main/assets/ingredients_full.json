@@ -6,7 +6,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "SWEETENER"
+        "functionalCategory": "SWEETENER",
+        "localizedNames": {
+            "el": "Ακεσουλφάμη Κάλιο"
+        },
+        "localizedDescriptions": {
+            "el": "Μπορεί να επηρεάσει τη μεταβολική υγεία και τη χλωρίδα του εντέρου σε μεγάλες ποσότητες."
+        }
     },
     {
         "name": "Ascorbic Acid",
@@ -16,7 +22,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "ACIDULANT"
+        "functionalCategory": "ACIDULANT",
+        "localizedNames": {
+            "el": "Ασκορβικό Οξύ"
+        },
+        "localizedDescriptions": {
+            "el": "Γνωστό ως Βιταμίνη C. Απαραίτητο θρεπτικό συστατικό και συντηρητικό."
+        }
     },
     {
         "name": "Aspartame",
@@ -25,7 +37,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "SWEETENER"
+        "functionalCategory": "SWEETENER",
+        "localizedNames": {
+            "el": "Ασπαρτάμη"
+        },
+        "localizedDescriptions": {
+            "el": "Αμφιλεγόμενο γλυκαντικό; πιθανές νευρολογικές ανησυχίες."
+        }
     },
     {
         "name": "Titanium Dioxide",
@@ -35,7 +53,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Διοξείδιο του Τιτανίου"
+        },
+        "localizedDescriptions": {
+            "el": "Λευκαντικός παράγοντας; απαγορεύτηκε στα τρόφιμα στην ΕΕ λόγω ανησυχιών για βλάβη στο DNA."
+        }
     },
     {
         "name": "Red 40",
@@ -45,7 +69,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Κόκκινο 40"
+        },
+        "localizedDescriptions": {
+            "el": "Κοινή χρωστική τροφίμων που συνδέεται με υπερκινητικότητα στα παιδιά."
+        }
     },
     {
         "name": "Red 3",
@@ -54,7 +84,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Κόκκινο 3"
+        },
+        "localizedDescriptions": {
+            "el": "Συνθετική χρωστική που συνδέεται με όγκους θυρεοειδούς σε μελέτες ζώων."
+        }
     },
     {
         "name": "Yellow 5",
@@ -63,7 +99,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Κίτρινο 5"
+        },
+        "localizedDescriptions": {
+            "el": "Χρωστική τροφίμων που μπορεί να προκαλέσει αλλεργικές αντιδράσεις."
+        }
     },
     {
         "name": "Yellow 6",
@@ -72,7 +114,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Κίτρινο 6"
+        },
+        "localizedDescriptions": {
+            "el": "Χρωστική τροφίμων που σχετίζεται με όγκους επινεφριδίων σε ζώα."
+        }
     },
     {
         "name": "Blue 1",
@@ -81,7 +129,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Μπλε 1"
+        },
+        "localizedDescriptions": {
+            "el": "Χρωστική που μπορεί να προκαλέσει αντιδράσεις υπερευαισθησίας."
+        }
     },
     {
         "name": "Blue 2",
@@ -90,7 +144,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "COLORANT"
+        "functionalCategory": "COLORANT",
+        "localizedNames": {
+            "el": "Μπλε 2"
+        },
+        "localizedDescriptions": {
+            "el": "Προέρχεται από το ινδικό; συνδέεται με γλοιώματα εγκεφάλου σε αρουραίους."
+        }
     },
     {
         "name": "Sodium Benzoate",
@@ -100,7 +160,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "Βενζοϊκό Νάτριο"
+        },
+        "localizedDescriptions": {
+            "el": "Συντηρητικό που μπορεί να σχηματίσει καρκινογόνο βενζόλιο με Βιταμίνη C."
+        }
     },
     {
         "name": "BHA",
@@ -110,7 +176,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "BHA"
+        },
+        "localizedDescriptions": {
+            "el": "Βουτυλυδροξυανισόλη. Συντηρητικό ταξινομημένο ως πιθανό καρκινογόνο."
+        }
     },
     {
         "name": "Butylated Hydroxyanisole",
@@ -120,7 +192,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "Βουτυλυδροξυανισόλη"
+        },
+        "localizedDescriptions": {
+            "el": "Πλήρες όνομα για BHA. Συντηρητικό ταξινομημένο ως πιθανό καρκινογόνο."
+        }
     },
     {
         "name": "BHT",
@@ -130,7 +208,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "BHT"
+        },
+        "localizedDescriptions": {
+            "el": "Βουτυλυδροξυτολουόλιο. Συνδέεται με καρκίνο και ενδοκρινική διαταραχή."
+        }
     },
     {
         "name": "Potassium Bromate",
@@ -139,7 +223,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "FLOUR IMPROVER"
+        "functionalCategory": "FLOUR IMPROVER",
+        "localizedNames": {
+            "el": "Βρωμικό Κάλιο"
+        },
+        "localizedDescriptions": {
+            "el": "Βελτιωτικό αλεύρων που συνδέεται με καρκίνο; απαγορευμένο σε πολλές χώρες."
+        }
     },
     {
         "name": "Propylparaben",
@@ -149,7 +239,13 @@
             "FOOD",
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "Προπυλπαραμπένη"
+        },
+        "localizedDescriptions": {
+            "el": "Ενδοκρινικός διαταράκτης; συνδέεται με αναπαραγωγική τοξικότητα."
+        }
     },
     {
         "name": "Sodium Nitrite",
@@ -158,7 +254,13 @@
         "categories": [
             "FOOD"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "Νιτρώδες Νάτριο"
+        },
+        "localizedDescriptions": {
+            "el": "Συντηρητικό σε επεξεργασμένα κρέατα; συνδέεται με καρκίνο του παχέος εντέρου."
+        }
     },
     {
         "name": "Parabens",
@@ -167,7 +269,13 @@
         "categories": [
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "Παραμπέν"
+        },
+        "localizedDescriptions": {
+            "el": "Κατηγορία συντηρητικών που συνδέονται με ορμονική διαταραχή."
+        }
     },
     {
         "name": "Phthalates",
@@ -176,7 +284,13 @@
         "categories": [
             "COSMETICS"
         ],
-        "functionalCategory": "FRAGRANCE MODIFIER"
+        "functionalCategory": "FRAGRANCE MODIFIER",
+        "localizedNames": {
+            "el": "Φθαλικές ενώσεις"
+        },
+        "localizedDescriptions": {
+            "el": "Πλαστικοποιητές που συνδέονται με αναπαραγωγική βλάβη."
+        }
     },
     {
         "name": "Formaldehyde",
@@ -185,7 +299,13 @@
         "categories": [
             "COSMETICS"
         ],
-        "functionalCategory": "PRESERVATIVE"
+        "functionalCategory": "PRESERVATIVE",
+        "localizedNames": {
+            "el": "Φορμαλδεΰδη"
+        },
+        "localizedDescriptions": {
+            "el": "Γνωστό καρκινογόνο που χρησιμοποιείται σε ορισμένα προϊόντα μαλλιών."
+        }
     },
     {
         "name": "Triclosan",
@@ -194,7 +314,13 @@
         "categories": [
             "COSMETICS"
         ],
-        "functionalCategory": "ANTIBACTERIAL"
+        "functionalCategory": "ANTIBACTERIAL",
+        "localizedNames": {
+            "el": "Τρικλοζάνη"
+        },
+        "localizedDescriptions": {
+            "el": "Αντιβακτηριακός παράγοντας που συνδέεται με ορμονική διαταραχή."
+        }
     },
     {
         "name": "Sodium Lauryl Sulfate",
@@ -203,7 +329,13 @@
         "categories": [
             "COSMETICS"
         ],
-        "functionalCategory": "SURFACTANT"
+        "functionalCategory": "SURFACTANT",
+        "localizedNames": {
+            "el": "Λαυρυλοθειικό Νάτριο"
+        },
+        "localizedDescriptions": {
+            "el": "Επιφανειοδραστικό που μπορεί να προκαλέσει ερεθισμό του δέρματος."
+        }
     },
     {
         "name": "SLS",
@@ -212,6 +344,12 @@
         "categories": [
             "COSMETICS"
         ],
-        "functionalCategory": "SURFACTANT"
+        "functionalCategory": "SURFACTANT",
+        "localizedNames": {
+            "el": "SLS"
+        },
+        "localizedDescriptions": {
+            "el": "Συντομογραφία για το Λαυρυλοθειικό Νάτριο; ερεθιστικό του δέρματος."
+        }
     }
 ]

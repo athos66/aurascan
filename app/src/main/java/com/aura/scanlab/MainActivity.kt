@@ -19,6 +19,11 @@ class MainActivity : ComponentActivity() {
     // Executor for camera analysis tasks to keep the UI thread responsive
     private lateinit var cameraExecutor: ExecutorService
 
+    override fun attachBaseContext(newBase: android.content.Context) {
+        val context = com.aura.scanlab.utils.LocaleHelper.setLocale(newBase)
+        super.attachBaseContext(context)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         cameraExecutor = Executors.newSingleThreadExecutor()

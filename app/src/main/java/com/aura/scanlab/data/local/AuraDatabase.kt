@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [IngredientEntity::class, HistoryEntity::class], version = 4, exportSchema = false)
+@Database(entities = [IngredientEntity::class, HistoryEntity::class], version = 5, exportSchema = false)
 abstract class AuraDatabase : RoomDatabase() {
     abstract fun ingredientDao(): IngredientDao
     abstract fun historyDao(): HistoryDao

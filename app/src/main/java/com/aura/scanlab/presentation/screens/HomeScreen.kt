@@ -57,6 +57,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -101,7 +102,7 @@ fun HomeScreen(
         )
     } else {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Camera access required for scanning.")
+            Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.camera_required))
         }
     }
 }
@@ -168,7 +169,7 @@ fun HomeScreenContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Status Capsule
-            TopStatusCapsule(text = "Analyzing Ingredients...")
+            TopStatusCapsule(text = androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.analyzing_ingredients))
             
             // Flashlight Button
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -230,10 +231,10 @@ fun HomeScreenContent(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Check,
-                        contentDescription = "Complete",
+                        contentDescription = stringResource(com.aura.scanlab.R.string.complete),
                         tint = Color.White
                     )
-                    Text("Scan Complete", color = Color.White, style = MaterialTheme.typography.bodyMedium)
+                    Text(androidx.compose.ui.res.stringResource(com.aura.scanlab.R.string.scan_complete), color = Color.White, style = MaterialTheme.typography.bodyMedium)
                 }
             }
         }
@@ -300,7 +301,7 @@ fun FlashlightButton(isFlashOn: Boolean, onClick: () -> Unit) {
     ) {
         Icon(
             imageVector = if (isFlashOn) Icons.Default.FlashOn else Icons.Default.FlashOff,
-            contentDescription = "Flashlight",
+            contentDescription = stringResource(com.aura.scanlab.R.string.flashlight),
             modifier = Modifier.size(20.dp)
         )
     }
@@ -334,7 +335,7 @@ fun ModeSwitcher(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "FOOD",
+                    text = stringResource(com.aura.scanlab.R.string.mode_food),
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp
@@ -351,7 +352,7 @@ fun ModeSwitcher(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "COSMETICS",
+                    text = stringResource(com.aura.scanlab.R.string.mode_cosmetics),
                     color = Color.White.copy(alpha = 0.7f), // Dimmed when not selected
                     fontWeight = FontWeight.Medium,
                     fontSize = 14.sp
@@ -364,6 +365,8 @@ fun ModeSwitcher(
 @Composable
 fun IngredientChip(ingredient: com.aura.scanlab.domain.model.Ingredient) {
     val isHighHazard = ingredient.hazardLevel == com.aura.scanlab.domain.model.HazardLevel.HIGH
+    val currentLang = java.util.Locale.getDefault().language
+    val displayName = ingredient.localizedNames[currentLang] ?: ingredient.name
     
     Card(
         shape = RoundedCornerShape(16.dp),
@@ -375,7 +378,7 @@ fun IngredientChip(ingredient: com.aura.scanlab.domain.model.Ingredient) {
         )
     ) {
         Text(
-            text = ingredient.name,
+            text = displayName,
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
             style = MaterialTheme.typography.labelSmall,
             color = if (isHighHazard) Color.White else DarkGrey

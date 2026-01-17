@@ -10,4 +10,6 @@ interface AuraRepository {
     suspend fun saveScan(item: HistoryItem)
     suspend fun searchIngredients(query: String): Flow<List<Ingredient>>
     suspend fun clearHistory()
+    suspend fun deleteAllIngredients()
+    suspend fun initialPopulate(ingredients: List<Ingredient>)
 }

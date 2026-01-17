@@ -11,6 +11,9 @@ interface IngredientDao {
     @Query("SELECT * FROM ingredients")
     fun getAllIngredients(): Flow<List<IngredientEntity>>
 
+    @Query("SELECT * FROM ingredients")
+    suspend fun getAllIngredientsOnce(): List<IngredientEntity>
+
     @Query("SELECT * FROM ingredients WHERE name LIKE '%' || :query || '%'")
     fun searchIngredients(query: String): Flow<List<IngredientEntity>>
 
@@ -19,6 +22,9 @@ interface IngredientDao {
 
     @Query("SELECT COUNT(*) FROM ingredients")
     suspend fun getIngredientCount(): Int
+
+    @Query("DELETE FROM ingredients")
+    suspend fun deleteAllIngredients()
 }
 
 @Dao
