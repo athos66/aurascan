@@ -36,7 +36,6 @@ import java.util.concurrent.Executors
 fun AuraScanApp(cameraExecutor: ExecutorService) {
     val context = LocalContext.current
     val activity = context as? Activity
-    val viewModel = remember { AuraViewModel(context) }
     val preferenceManager = remember { PreferenceManager(context) }
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -147,7 +146,7 @@ fun AuraScanApp(cameraExecutor: ExecutorService) {
                 }
             }
         ) { innerPadding ->
-            Box(modifier = Modifier.padding(innerPadding)) {
+            Box(modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())) {
                 AuraNavHost(
                     navController = navController,
                     cameraExecutor = cameraExecutor,

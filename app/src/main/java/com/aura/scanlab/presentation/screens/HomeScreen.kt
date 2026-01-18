@@ -37,7 +37,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.FlashOff
 import androidx.compose.material.icons.filled.FlashOn
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -164,7 +163,7 @@ fun HomeScreenContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .safeDrawingPadding() // Handle status bar
-                .padding(top = 16.dp, start = 16.dp, end = 16.dp),
+                .padding(top = 0.dp, start = 20.dp, end = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {

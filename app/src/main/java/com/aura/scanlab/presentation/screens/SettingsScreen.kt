@@ -37,16 +37,16 @@ fun SettingsScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
+            .padding(horizontal = 20.dp)
             .statusBarsPadding()
     ) {
         // Header
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 20.dp),
+                .padding(top = 0.dp, bottom = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = stringResource(R.string.settings_title),
                 color = Color.White,
@@ -55,7 +55,7 @@ fun SettingsScreen() {
             )
         }
 
-        Column(modifier = Modifier.padding(horizontal = 20.dp)) {
+        Column {
             Text(
                 stringResource(R.string.settings_general),
                 color = Color.Gray,

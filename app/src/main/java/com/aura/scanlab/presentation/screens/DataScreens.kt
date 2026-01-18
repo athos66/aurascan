@@ -21,20 +21,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Eco
 import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -51,7 +47,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.stringResource
 import com.aura.scanlab.R
-import com.aura.scanlab.BuildConfig
 import com.aura.scanlab.domain.model.HistoryItem
 import com.aura.scanlab.domain.model.Ingredient
 import com.aura.scanlab.presentation.theme.AlertRed
@@ -96,14 +91,14 @@ fun HistoryScreenContent(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 24.dp),
+                .padding(top = 0.dp, bottom = 12.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 stringResource(R.string.history_title),
                 color = Color.White,
-                fontSize = 32.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
             
@@ -158,7 +153,7 @@ fun HistoryScreenContent(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
-            items(HistoryFilter.values()) { filter ->
+            items(HistoryFilter.entries.toTypedArray()) { filter ->
                 val isSelected = selectedFilter == filter
                 Box(
                     modifier = Modifier
@@ -359,7 +354,6 @@ fun HistoryCard(item: HistoryItem) {
 fun EncyclopediaScreen() {
     val context = LocalContext.current
     val viewModel = remember { LibraryViewModel(context) }
-    val historyViewModel = remember { HistoryViewModel(context) }
     val ingredientsByLetter by viewModel.ingredients.collectAsState()
     
     // We need all ingredients to extract unique categories for the filter bar
@@ -390,31 +384,26 @@ fun EncyclopediaScreenContent(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
+            .padding(horizontal = 20.dp)
             .statusBarsPadding()
     ) {
-        // TOP BAR
+        // Header
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 8.dp),
+                .padding(top = 0.dp, bottom = 12.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = { /* Back */ }) {
-                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back), tint = Color.White)
-            }
             Text(
                 stringResource(R.string.library_title),
                 color = Color.White,
-                fontSize = 20.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
-            IconButton(onClick = { /* Info */ }) {
-                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.info), tint = Color.White)
-            }
         }
 
-        Column(modifier = Modifier.padding(horizontal = 20.dp)) {
+        Column {
             // SEARCH BAR
             Surface(
                 modifier = Modifier
