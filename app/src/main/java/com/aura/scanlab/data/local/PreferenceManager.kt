@@ -13,6 +13,11 @@ class PreferenceManager(context: Context) {
     companion object {
         private const val KEY_ONBOARDING_COMPLETE = "onboarding_complete"
         private const val KEY_LANGUAGE = "app_language"
+        private const val KEY_THEME = "app_theme"
+        
+        const val THEME_SYSTEM = "system"
+        const val THEME_LIGHT = "light"
+        const val THEME_DARK = "dark"
         
         // Supported languages
         val SUPPORTED_LANGUAGES = listOf(
@@ -40,6 +45,14 @@ class PreferenceManager(context: Context) {
 
     fun setLanguage(languageCode: String) {
         prefs.edit().putString(KEY_LANGUAGE, languageCode).apply()
+    }
+
+    fun getTheme(): String {
+        return prefs.getString(KEY_THEME, THEME_SYSTEM) ?: THEME_SYSTEM
+    }
+
+    fun setTheme(theme: String) {
+        prefs.edit().putString(KEY_THEME, theme).apply()
     }
 }
 

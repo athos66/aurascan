@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,11 +33,19 @@ fun SettingsScreen() {
     
     var showClearConfirmation by remember { mutableStateOf(false) }
     var showLanguageDialog by remember { mutableStateOf(false) }
+    var showThemeDialog by remember { mutableStateOf(false) }
+
+    val currentThemeCode = preferenceManager.getTheme()
+    val currentThemeName = when(currentThemeCode) {
+        PreferenceManager.THEME_LIGHT -> stringResource(R.string.theme_light)
+        PreferenceManager.THEME_DARK -> stringResource(R.string.theme_dark)
+        else -> stringResource(R.string.theme_system)
+    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(MaterialTheme.colorScheme.background)
             .padding(horizontal = 20.dp)
             .statusBarsPadding()
     ) {
@@ -49,7 +58,7 @@ fun SettingsScreen() {
         ) {
             Text(
                 text = stringResource(R.string.settings_title),
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -78,6 +87,18 @@ fun SettingsScreen() {
             
             Spacer(modifier = Modifier.height(12.dp))
 
+            // Theme Item
+            
+            SettingsItem(
+                title = stringResource(R.string.theme),
+                subtitle = currentThemeName,
+                icon = Icons.Default.Palette,
+                color = Color(0xFF9C27B0), // Purple
+                onClick = { showThemeDialog = true }
+            )
+            
+            Spacer(modifier = Modifier.height(12.dp))
+
             // Clear History Item
             SettingsItem(
                 title = stringResource(R.string.clear_history),
@@ -88,13 +109,54 @@ fun SettingsScreen() {
         }
     }
 
+    // Theme Dialog
+    if (showThemeDialog) {
+        AlertDialog(
+            onDismissRequest = { showThemeDialog = false },
+            containerColor = MaterialTheme.colorScheme.surface,
+            title = {
+                Text(stringResource(R.string.select_theme), color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
+            },
+            text = {
+                Column {
+                    listOf(
+                        PreferenceManager.THEME_SYSTEM to stringResource(R.string.theme_system),
+                        PreferenceManager.THEME_LIGHT to stringResource(R.string.theme_light),
+                        PreferenceManager.THEME_DARK to stringResource(R.string.theme_dark)
+                    ).forEach { (code, name) ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    preferenceManager.setTheme(code)
+                                    showThemeDialog = false
+                                    (context as? Activity)?.recreate()
+                                }
+                                .padding(vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            RadioButton(
+                                selected = currentThemeCode == code,
+                                onClick = null,
+                                colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF00E676), unselectedColor = Color.Gray)
+                            )
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Text(name, color = MaterialTheme.colorScheme.onSurface, fontSize = 16.sp)
+                        }
+                    }
+                }
+            },
+            confirmButton = {}
+        )
+    }
+
     // Language Dialog
     if (showLanguageDialog) {
         AlertDialog(
             onDismissRequest = { showLanguageDialog = false },
-            containerColor = Color(0xFF1A1A1A),
+            containerColor = MaterialTheme.colorScheme.surface,
             title = {
-                Text(stringResource(R.string.select_language), color = Color.White, fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.select_language), color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
             },
             text = {
                 Column {
@@ -118,7 +180,7 @@ fun SettingsScreen() {
                                 colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF00E676), unselectedColor = Color.Gray)
                             )
                             Spacer(modifier = Modifier.width(12.dp))
-                            Text(lang.displayName, color = Color.White, fontSize = 16.sp)
+                            Text(lang.displayName, color = MaterialTheme.colorScheme.onSurface, fontSize = 16.sp)
                         }
                     }
                 }

@@ -73,6 +73,11 @@
     <string name="clear">Εκκαθάριση</string>
     <string name="cancel">Ακύρωση</string>
     <string name="select_language">Επιλογή Γλώσσας</string>
+    <string name="theme">Θέμα</string>
+    <string name="theme_system">Προεπιλογή Συστήματος</string>
+    <string name="theme_light">Φωτεινό</string>
+    <string name="theme_dark">Σκούρο</string>
+    <string name="select_theme">Επιλογή Θέματος</string>
     <string name="nav_history">Ιστορικό</string>
     <string name="loading">Φόρτωση…</string>
     <string name="items_count">%d ΑΝΤΙΚΕΙΜΕΝΑ</string>

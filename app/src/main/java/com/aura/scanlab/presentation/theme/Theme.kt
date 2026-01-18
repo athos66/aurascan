@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import com.aura.scanlab.data.local.PreferenceManager
 
 private val DarkColorScheme = darkColorScheme(
     primary = SuccessGreen,
@@ -34,9 +35,15 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun AuraScanTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    theme: String = PreferenceManager.THEME_SYSTEM,
     content: @Composable () -> Unit
 ) {
+    val darkTheme = when (theme) {
+        PreferenceManager.THEME_LIGHT -> false
+        PreferenceManager.THEME_DARK -> true
+        else -> isSystemInDarkTheme()
+    }
+    
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(

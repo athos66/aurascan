@@ -52,6 +52,7 @@ import com.aura.scanlab.domain.model.Ingredient
 import com.aura.scanlab.presentation.theme.AlertRed
 import com.aura.scanlab.presentation.theme.SuccessGreen
 import android.text.format.DateFormat
+import androidx.compose.material3.MaterialTheme
 import com.aura.scanlab.data.local.PreferenceManager
 import java.util.Date
 
@@ -83,7 +84,7 @@ fun HistoryScreenContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(MaterialTheme.colorScheme.background)
             .padding(horizontal = 20.dp)
             .statusBarsPadding()
     ) {
@@ -97,7 +98,7 @@ fun HistoryScreenContent(
         ) {
             Text(
                 stringResource(R.string.history_title),
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -211,7 +212,7 @@ fun HistoryScreenContent(
                         ) {
                             Text(
                                 text = date,
-                                color = Color.White,
+                                color = MaterialTheme.colorScheme.onBackground,
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -286,7 +287,7 @@ fun HistoryCard(item: HistoryItem) {
                 ) {
                     Text(
                         item.productName,
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.onBackground,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -383,7 +384,7 @@ fun EncyclopediaScreenContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(MaterialTheme.colorScheme.background)
             .padding(horizontal = 20.dp)
             .statusBarsPadding()
     ) {
@@ -397,7 +398,7 @@ fun EncyclopediaScreenContent(
         ) {
             Text(
                 stringResource(R.string.library_title),
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -586,7 +587,7 @@ fun EncyclopediaCard(ingredient: Ingredient, currentLang: String) {
                 
                 Text(
                     text = displayName,
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     lineHeight = 26.sp

@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -54,14 +55,16 @@ fun AuraScanApp(cameraExecutor: ExecutorService) {
         }
     }
 
-    AuraScanTheme {
+    val currentTheme = preferenceManager.getTheme()
+
+    AuraScanTheme(theme = currentTheme) {
         Scaffold(
             bottomBar = {
                 if (currentDestination?.route in mainScreens) {
                 // Bottom Navigation
                 NavigationBar(
-                    containerColor = Color.Black,
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.background,
+                    contentColor = MaterialTheme.colorScheme.onBackground
                 ) {
                     NavigationBarItem(
                         icon = { Icon(Icons.Default.QrCodeScanner, contentDescription = null) },

@@ -26,6 +26,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -61,7 +62,7 @@ fun ScanResultPopup(
 
     Card(
         shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF0F1210)), // Very dark dark-green/black
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), // Unified theme surface
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight(0.75f) // Take up 75% of screen height
@@ -133,7 +134,7 @@ fun ScanResultPopup(
                 modifier = Modifier
                     .padding(horizontal = 20.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(Color(0xFF1A1D1A)) // Slightly lighter dark background
+                    .background(MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f)) // Themed variant
                     .padding(16.dp)
             ) {
                 Row(verticalAlignment = Alignment.Top) {
@@ -258,7 +259,7 @@ fun IngredientRow(ingredient: Ingredient) {
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = displayDesc,
-                color = Color.LightGray,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 14.sp,
                 lineHeight = 20.sp
             )
